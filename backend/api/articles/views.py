@@ -37,7 +37,7 @@ def get_articles(tag=None, author=None, favorited=None, limit=20, offset=0):
 
 
 @blueprint.route('/api/articles', methods=('POST',))
-@jwt_required
+@jwt_optional
 @use_kwargs(article_schema)
 @marshal_with(article_schema)
 def make_article(body, title, description, tagList=None):

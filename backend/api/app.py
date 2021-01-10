@@ -3,7 +3,7 @@
 from flask import Flask
 from api.extensions import bcrypt, cache, db, migrate, jwt, cors
 
-from api import commands, user, profile, articles
+from api import commands, user, profile, articles, requirements
 from api.settings import ProdConfig
 from api.exceptions import InvalidUsage
 
@@ -40,10 +40,12 @@ def register_blueprints(app):
     cors.init_app(user.views.blueprint, origins=origins)
     cors.init_app(profile.views.blueprint, origins=origins)
     cors.init_app(articles.views.blueprint, origins=origins)
+    cors.init_app(requirements.views.blueprint, origins=origins)
 
     app.register_blueprint(user.views.blueprint)
     app.register_blueprint(profile.views.blueprint)
     app.register_blueprint(articles.views.blueprint)
+    app.register_blueprint(requirements.views.blueprint)
 
 
 def register_errorhandlers(app):
@@ -67,6 +69,7 @@ def register_shellcontext(app):
             'Article': articles.models.Article,
             'Tag': articles.models.Tags,
             'Comment': articles.models.Comment,
+            'Requirement': requirements.models.Requirement
         }
 
     app.shell_context_processor(shell_context)
