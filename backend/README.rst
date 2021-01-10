@@ -13,7 +13,7 @@ add the following to ``.bashrc`` or ``.bash_profile``.
 
 .. code-block:: bash
 
-    export CONDUIT_SECRET='something-really-secret'
+    export api_SECRET='something-really-secret'
 
 Before running shell commands, set the ``FLASK_APP`` and ``FLASK_DEBUG``
 environment variables ::

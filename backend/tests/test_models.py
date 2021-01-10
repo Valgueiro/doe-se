@@ -4,9 +4,9 @@ import datetime as dt
 
 import pytest
 
-from conduit.user.models import User
-from conduit.profile.models import UserProfile
-from conduit.articles.models import Article, Tags, Comment
+from api.user.models import User
+from api.profile.models import UserProfile
+from api.articles.models import Article, Tags, Comment
 
 
 from .factories import UserFactory

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from flask import url_for
-from conduit.exceptions import USER_ALREADY_REGISTERED
+from api.exceptions import USER_ALREADY_REGISTERED
 
 
 def _register_user(testapp, **kwargs):
