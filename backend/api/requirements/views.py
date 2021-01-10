@@ -22,15 +22,24 @@ blueprint = Blueprint('requirements', __name__)
 @blueprint.route('/api/requirements', methods=['GET'])
 @jwt_optional
 @marshal_with(requirements_schema)
-def get_articles(limit=20, offset=0):
+def get_requirements(limit=20, offset=0):
     res = Requirement.query
     return res.offset(offset).limit(limit).all()
+
+@blueprint.route('/api/requirements/<id>', methods=['GET'])
+@jwt_optional
+@marshal_with(requirement_schema)
+def get_requirement_by_id(id):
+    req = Requirement.query.filter_by(id=id).first()
+    if not req:
+        raise InvalidUsage.article_not_found()
+    return req
 
 @blueprint.route('/api/requirements', methods=['POST'])
 @use_kwargs(requirement_schema)
 @jwt_optional
 @marshal_with(requirement_schema)
-def make_article(name, age, **kwargs):
+def create_requirement(name, age, **kwargs):
     requirement = Requirement(name=name, age=age)
     requirement.save()
     return requirement
