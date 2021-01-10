@@ -1,0 +1,13 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  api:
+    image: python:3.8-alpine
+    ports:
+      - "5000:5000"
+    working_dir: /api
+    volumes:
+      - ./backend:/api
+    environment: 
+      - FLASK_APP=/api/autoapp.py
+      - FLASK_DEBUG=1
+    entrypoint: sh -c /api/entrypoint.sh
