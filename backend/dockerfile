@@ -21,11 +21,13 @@ ENV FLASK_HOST="0.0.0.0"
 ENV FLASK_APP="/backend/autoapp.py"
 ENV FLASK_DEBUG=1
 
+# delete old migrations
+RUN rm -rf migrations
+
 # Prepare DB
 RUN flask db init && \
     flask db migrate && \
     flask db upgrade
-
 
 EXPOSE 5000
 
