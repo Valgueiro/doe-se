@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'
+import api from '../services/api/base'
 
 const BoxTest = styled.div`
   width: 100%;
@@ -15,6 +17,19 @@ const Title = styled.h1`
 `
 
 export default function Home() {
+  useEffect(() => {
+    async function testeApi () {
+      try {
+        const response = await api.get('/');
+        console.log(response);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    testeApi()
+  },[])
+
   return (
     <BoxTest>
       <Title>Testando styled components</Title>
