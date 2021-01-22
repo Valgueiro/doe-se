@@ -1,8 +1,25 @@
-version: "3.9"  # optional since v1.27.0
 services:
   api:
     build: ./backend
     ports:
       - "5000:5000"
     volumes:
-    - './backend:/backend'
+    - ./backend:/backend
+    entrypoint: /bin/sh /backend/entrypoint.sh
+  web:
+    image: node:alpine
+    working_dir: /frontend
+    ports:
+      - "3000:3000"
+    volumes:
+    - ./frontend:/frontend
+    - node_modules:/frontend/node_modules
+    - next_tmp:/frontend/.next
+    - yarn_cache:/usr/local/share/.cache/yarn/v1
+    entrypoint: /bin/sh /frontend/entrypoint.sh
+
+volumes:
+  node_modules:
+  next_tmp:
+  yarn_cache:
+  api_db:
