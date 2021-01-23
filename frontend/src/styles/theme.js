@@ -1,6 +1,9 @@
 
 export const Theme = {
   colors: {
-    primary: '#0070f3',
+    red: '#FF4E4E',
+    white: '#ffffff',
+    pageBackground: 'rgba(219, 224, 230, 0.5)',
+    black: '#000000'
   }
 }
