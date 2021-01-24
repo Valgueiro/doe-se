@@ -1,10 +1,10 @@
 import { Container, Content } from './styles'
 import Navbar from '../../Navbar'
 
-const Page = ({ children }) => {
+const Page = ({ children, noRegisterButton }) => {
   return (
     <Container>
-      <Navbar />
+      <Navbar noRegisterButton={noRegisterButton}/>
       <Content>
         {children}
       </Content>

@@ -4,7 +4,7 @@ const Container = styled.div`
   width: 1000px;
   height: 250px;
   display: flex;
-  border-radius: 20px;
+  border-radius: 4px;
   background-color: ${props => props.theme.colors.white};
   margin: 20px 0 20px 0;
   padding: 25px;
@@ -12,7 +12,7 @@ const Container = styled.div`
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
-    box-shadow: 0 4px 2px -2px ${props => `${props.theme.colors.black}1A`};
+    box-shadow: 0 4px 2px -2px ${props => `${props.theme.colors.black}1A`}; /* transparency -> 10% — 1A */
   }
 `;
 

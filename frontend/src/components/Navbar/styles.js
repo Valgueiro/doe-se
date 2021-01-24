@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button from 'react-bootstrap/Button'
 
 const Container = styled.div`
   width: 100%;
@@ -6,7 +7,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   background-color: ${props => props.theme.colors.white};
-  box-shadow: 0 4px 2px -2px ${props => `${props.theme.colors.black}1A`};
+  box-shadow: 0 4px 2px -2px ${props => `${props.theme.colors.black}1A`}; /* transparency -> 10% — 1A */
 `;
 
 const Content = styled.div`
@@ -16,13 +17,22 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  position: relative;
 `;
 
 const Title = styled.h1`
   font-weight: 700;
   font-size: 24px;
   margin: 0;
-  color: ${props => props.theme.colors.red}
+  color: ${props => props.theme.colors.red};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-export { Container, Content, Title }
+const RegisterButton = styled(Button)`
+  position: absolute;
+  right: 0;
+`;
+
+export { Container, Content, Title, RegisterButton }

@@ -8,6 +8,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   width: 100%;
+  height: calc(100vh - 60px);
   min-height: calc(100vh - 60px);
   overflow-y: auto;
 `;
