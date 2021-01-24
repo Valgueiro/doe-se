@@ -2,7 +2,7 @@
 
 import datetime as dt
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_apispec import marshal_with, use_kwargs
 from flask_jwt_extended import current_user, jwt_required, jwt_optional
 from marshmallow import fields
@@ -36,10 +36,12 @@ def get_requirement_by_id(id):
     return req
 
 @blueprint.route('/api/requirements', methods=['POST'])
-@use_kwargs(requirement_schema)
+# @use_kwargs(requirement_schema)
 @jwt_optional
-@marshal_with(requirement_schema)
-def create_requirement(name, age, **kwargs):
+# @marshal_with(requirement_schema)
+def create_requirement(**kwargs):
+    print(request)
+    print(kwargs)
     requirement = Requirement(name=name, age=age)
     requirement.save()
     return requirement

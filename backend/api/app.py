@@ -3,9 +3,10 @@
 from flask import Flask
 from api.extensions import bcrypt, cache, db, migrate, jwt, cors
 
-from api import commands, user, profile, articles, requirements
+from api import user, profile, articles, requirements
 from api.settings import ProdConfig
 from api.exceptions import InvalidUsage
+from flask_apispec.extension import FlaskApiSpec
 
 
 def create_app(config_object=ProdConfig):
@@ -21,7 +22,7 @@ def create_app(config_object=ProdConfig):
     register_blueprints(app)
     register_errorhandlers(app)
     register_shellcontext(app)
-    register_commands(app)
+    # register_docs(app)
     return app
 
 
@@ -74,10 +75,22 @@ def register_shellcontext(app):
 
     app.shell_context_processor(shell_context)
 
+# from apispec import APISpec
+# from apispec.ext.marshmallow import MarshmallowPlugin
+# from apispec_webframeworks.flask import FlaskPlugin
+# def register_docs(app):
+#     spec = APISpec(
+#             openapi_version="3.0.3",
+#             title='doe-se',
+#             version='v1',
+#             plugins=[FlaskPlugin(), MarshmallowPlugin()],
+#         ),
 
-def register_commands(app):
-    """Register Click commands."""
-    app.cli.add_command(commands.test)
-    app.cli.add_command(commands.lint)
-    app.cli.add_command(commands.clean)
-    app.cli.add_command(commands.urls)
+
+#     spec.components.schema("Requirements", schema=requirements.schema)
+
+#     app.config.update({
+#         'APISPEC_SPEC': spec,
+#         'APISPEC_SWAGGER_UI_URL': '/docs/',
+#     })  
+#     docs = FlaskApiSpec(app)
