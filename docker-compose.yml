@@ -1,11 +1,4 @@
 services:
-  api:
-    build: ./backend
-    ports:
-      - "5000:5000"
-    volumes:
-    - ./backend:/backend
-    entrypoint: /bin/sh /backend/entrypoint.sh
   web:
     image: node:alpine
     working_dir: /frontend
@@ -22,4 +15,3 @@ volumes:
   node_modules:
   next_tmp:
   yarn_cache:
-  api_db:
