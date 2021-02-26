@@ -7,7 +7,7 @@ import Donatary from './Donatary'
 // If no 'type' is passed, the registration type screen will be shown,
 // otherwise the selected registration type will be shown.
 const RegisterCard = ({ type }) => {
-  const [registerType, setRegisterType] = useState(undefined)
+  const [registerType, setRegisterType] = useState('registerTypeSelection')
 
   useEffect(() => {
     if (type === 'donor') setRegisterType('donor') 
@@ -15,11 +15,24 @@ const RegisterCard = ({ type }) => {
     else setRegisterType(undefined)
   },[type])
 
+  const backToRegisterTypeSelectionCard = () => {
+    setRegisterType('registerTypeSelection');
+  }
+
+  const Content = () => {
+    switch (registerType) {
+      case 'donor':
+        return <h1>Doador</h1>
+      case 'donatary':
+        return <Donatary backToRegisterTypeSelectionCard={backToRegisterTypeSelectionCard}/>
+      default:
+        return <SelectRegisterType setRegisterType={setRegisterType}/>
+    }
+  }
+
   return (
     <Container>
-      {!registerType && <SelectRegisterType setRegisterType={setRegisterType}/>}
-      {registerType === 'donor' && <h1>doador</h1>}
-      {registerType === 'donatary' && <Donatary />}
+      <Content />
     </Container>
   )
 }

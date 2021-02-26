@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: 4px;
   background-color: ${props => props.theme.colors.white};
   margin: 20px 0 20px 0;
-  padding: 25px;
+  /* padding: 25px; */
   transition: all .2s ease-in-out;
   &:hover {
     cursor: pointer;
@@ -17,16 +17,16 @@ const Container = styled.div`
 `;
 
 const Image = styled.div`
-  width: 235px;
-  height: 200px;
-  border-radius: 10px;
+  width: 400px;
+  height: 250px;
+  border-radius: 4px 0px 0px 4px;
   background-color: grey;
 `;
 
 const Infos = styled.div`
-  width: 675px;
-  height: 200px;
-  margin-left: 40px;
+  width: 600px;
+  height: 250px;
+  padding: 40px 50px 40px 50px;
 `;
 
 const Name = styled.div`
@@ -36,7 +36,7 @@ const Name = styled.div`
 
 const NameText = styled.h1`
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -45,7 +45,7 @@ const NameText = styled.h1`
 
 const Description = styled.div`
   width: 100%;
-  height: 170px;
+  height: 100%;
   padding: 10px 0 0 0;
   overflow-y: auto;
 `;

@@ -14,7 +14,7 @@ const Content = styled.div`
   width: 1000px;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   position: relative;
@@ -30,9 +30,18 @@ const Title = styled.h1`
   }
 `;
 
-const RegisterButton = styled(Button)`
-  position: absolute;
-  right: 0;
+const ButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
-export { Container, Content, Title, RegisterButton }
+const RegisterButton = styled(Button)`
+  width: 150px;
+`;
+
+const LoginButton = styled(Button)`
+  width: 150px;
+  margin-right: 20px;
+`;
+
+export { Container, Content, Title, ButtonsWrapper, RegisterButton, LoginButton }

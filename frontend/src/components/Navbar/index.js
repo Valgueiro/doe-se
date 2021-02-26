@@ -1,4 +1,4 @@
-import { Container, Content, Title, RegisterButton } from './styles'
+import { Container, Content, Title, ButtonsWrapper, RegisterButton, LoginButton } from './styles'
 import Link from 'next/link'
 
 const Navbar = ({ noRegisterButton }) => {
@@ -9,9 +9,12 @@ const Navbar = ({ noRegisterButton }) => {
           <Title>Doe-se</Title>
         </Link>
         {!noRegisterButton && (
-          <Link href="/register">
-            <RegisterButton variant="danger">Cadastre-se</RegisterButton>
-          </Link> 
+          <ButtonsWrapper>
+            <LoginButton variant="primary">Login</LoginButton>
+            <Link href="/register">
+              <RegisterButton variant="danger">Cadastre-se</RegisterButton>
+            </Link>
+          </ButtonsWrapper>
         )}
       </Content>
     </Container>

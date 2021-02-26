@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import RegisterModel from '../../RegisterModel'
 import { Form, Col } from 'react-bootstrap'
-import { FirsPhaseForm , SubmitButton, FormGroup, WarningText } from './styles'
+import { FirsPhaseForm , SubmitButton, FormGroup, WarningText, BackButton, BackIcon } from './styles'
 
-const FirstRegisterPhase = ({ setRegisterPhase, updateRegisterData }) => {
+const FirstRegisterPhase = ({ setRegisterPhase, updateRegisterData, backToRegisterTypeSelectionCard }) => {
   const [showWarningText, setShowWarningText] = useState(false)
 
   const handleSubmit = (event) => {
@@ -38,9 +38,16 @@ const FirstRegisterPhase = ({ setRegisterPhase, updateRegisterData }) => {
     setRegisterPhase('second')
   }
 
+  const handleBackButtonClick = () => {
+    backToRegisterTypeSelectionCard();
+  }
+
   return (
     <RegisterModel title="Cadastro de donatário">
       {showWarningText && <WarningText>Está faltando preencher algo</WarningText>}
+      <BackButton variant="secondary" onClick={() => handleBackButtonClick()}>
+        <BackIcon />
+      </BackButton>
       <FirsPhaseForm onSubmit={handleSubmit}>
         <FormGroup>
           <Form.Control 

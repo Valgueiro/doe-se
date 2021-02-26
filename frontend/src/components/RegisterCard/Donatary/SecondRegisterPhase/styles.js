@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Form, Button } from 'react-bootstrap'
 import { RiFileUserLine } from 'react-icons/ri'
+import { IoIosArrowRoundBack } from 'react-icons/io'
 
 const FormFile = styled(Form.File)`
   width: 390px;
@@ -59,6 +60,21 @@ const WarningText = styled.p`
   color: ${props => props.theme.colors.red};
 `;
 
+const BackButton = styled(Button)`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -83px;
+  left: 10px;
+  padding: 0;
+`;
+
+const BackIcon = styled(IoIosArrowRoundBack)`
+  width: 30px;
+  height: 30px;
+  margin: auto auto;
+`;
+
 export { 
   FormFile, 
   InputFile, 
@@ -67,5 +83,7 @@ export {
   FormGroup, 
   SubmitButton,
   UserIcon,
-  WarningText
+  WarningText,
+  BackButton,
+  BackIcon
 }

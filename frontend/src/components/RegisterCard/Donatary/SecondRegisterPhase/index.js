@@ -9,7 +9,9 @@ import {
   FormGroup, 
   SubmitButton,
   UserIcon,
-  WarningText } from './styles'
+  WarningText,
+  BackButton,
+  BackIcon } from './styles'
 
 const SecondRegisterPhase = ({ setRegisterPhase, updateRegisterData }) => {
   const [imgSrc, setImgSrc] = useState(undefined)
@@ -38,9 +40,16 @@ const SecondRegisterPhase = ({ setRegisterPhase, updateRegisterData }) => {
     setRegisterPhase('loading')
   }
 
+  const backToFirstRegisterPhase = () => {
+    setRegisterPhase('first');
+  }
+
   return (
   <RegisterModel title="Cadastro de donatário">
     {showWarningText && <WarningText>Está faltando algo</WarningText>}
+    <BackButton variant="secondary" onClick={() => backToFirstRegisterPhase()}>
+      <BackIcon />
+    </BackButton>
     <FormFile id="formcheck-api-regular">
       <InputLabel>
       <UserIcon style={{width:  70, height: 70}}/>
@@ -56,7 +65,7 @@ const SecondRegisterPhase = ({ setRegisterPhase, updateRegisterData }) => {
       <FormGroup>
         <Form.Control 
           as="textarea"
-          placeholder="Fale sobre o donatário, para que as pessoas o conhecem melhor." 
+          placeholder="Fale sobre o donatário" 
           rows={3} 
           name="description"
           style={{resize: 'none'}}/>

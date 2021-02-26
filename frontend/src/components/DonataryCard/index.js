@@ -7,19 +7,18 @@ import {
   Description, 
   DescriptionText } from './styles'
 
-const UserCard = () => {
+const DonataryCard = ({data}) => {
+  const {name, description} = data;
   return (
     <Container>
       <Image></Image>
       <Infos>
         <Name>
-          <NameText>Renata Luz</NameText>
+          <NameText>{name}</NameText>
         </Name>
         <Description>
           <DescriptionText>
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book. It has survived not.
+            {description}
           </DescriptionText>
         </Description>
       </Infos>
@@ -27,4 +26,4 @@ const UserCard = () => {
   )
 }
 
-export default UserCard
+export default DonataryCard

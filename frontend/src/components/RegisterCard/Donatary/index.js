@@ -6,7 +6,7 @@ import SuccessfulRegister from "../SuccessfulRegister";
 import RegisterError from "../RegisterError";
 import fire from "../../../config/firebase";
 
-const Donatary = () => {
+const Donatary = ({backToRegisterTypeSelectionCard}) => {
   // phase 1 (first) collects name, age, bloodType, rhFactor, hospital and bloodBank
   // phase 2 (second) collects description and photo
   const [registerPhase, setRegisterPhase] = useState("first");
@@ -37,27 +37,33 @@ const Donatary = () => {
     }
   }, [registerPhase]);
 
-  if (registerPhase === "first") {
-    return (
-      <FirstRegisterPhase
-        setRegisterPhase={setRegisterPhase}
-        updateRegisterData={updateRegisterData}
-      />
-    );
-  } else if (registerPhase === "second") {
-    return (
-      <SecondRegisterPhase
-        setRegisterPhase={setRegisterPhase}
-        updateRegisterData={updateRegisterData}
-      />
-    );
-  } else if (registerPhase === "loading") {
-    return <Loading />;
-  } else if (registerPhase === "registerError") {
-    return <RegisterError />;
+  const Content = () => {
+    switch (registerPhase) {
+      case "first":
+        return (
+          <FirstRegisterPhase
+            setRegisterPhase={setRegisterPhase}
+            updateRegisterData={updateRegisterData}
+            backToRegisterTypeSelectionCard={backToRegisterTypeSelectionCard}
+          />
+        )
+      case "second":
+        return (
+          <SecondRegisterPhase
+            setRegisterPhase={setRegisterPhase}
+            updateRegisterData={updateRegisterData}
+          />
+        );
+      case "loading":
+        return <Loading />
+      case "registerError":
+        return <RegisterError />;
+      default:
+        return <SuccessfulRegister />;
+    }
   }
 
-  return <SuccessfulRegister />;
+  return <Content />
 };
 
 export default Donatary;
