@@ -1,6 +1,6 @@
 import api from './base'
 export default class DonorService {
-    static getDonors(){
+        static getDonors(){
         return api.get('donors');
     }
 }
