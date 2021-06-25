@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Page from "../components/Containers/Page";
 import DonataryCard from "../components/DonataryCard";
 import { useEffect, useState } from "react";
-import fire from "../config/firebase";
+import DonorService from '../services/api/donor'
 
 const Content = styled.div`
   width: 1000px;
@@ -13,20 +13,11 @@ export default function Home() {
   const [requirements, setRequirements] = useState([]);
   // Get requirements from db
   useEffect(() => {
-    // clean up controller
-    let isSubscribed = true;
-    fire
-      .firestore()
-      .collection("requirements")
-      .onSnapshot((snap) => {
-        const requirements = snap.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        if (isSubscribed) setRequirements(requirements);
-      });
-    // cancel subscription to useEffect
-    return () => (isSubscribed = false)
+    async function fetchData(){
+      const reqs = await DonorService.getDonors();
+      setRequirements(reqs.data);
+    }
+    fetchData();
   }, []);
 
   return (
